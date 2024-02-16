@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:c="http://java.sun.com/xml/ns/javaee">
+<head>
+    <meta http-equiv="Content-Type" content="text/html" charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="./css/table.css">
+    <script src="https://kit.fontawesome.com/b56e379ce1.js" crossorigin="anonymous"></script>
+    <title>Employees</title>
+</head>
+<body>
+<h2>All Employees</h2>
+<br>
+<table>
+    <tr>
+        <th>Director</th>
+        <th>Department</th>
+        <th></th>
+    </tr>
+    <tr th:object="${director}">
+        <td th:text="${director.fullName}">fullName</td>
+        <td th:text="${director.department}">department</td>
+        <td class="last"></td>
+    </tr>
+</table>
+<table>
+    <tr>
+        <th>Employee</th>
+        <th>Department</th>
+        <th>Operations</th>
+    </tr>
+    <tr th:each="employee: ${allEmps}">
+        <td th:text="${employee.fullName}">fullName</td>
+        <td th:text="${employee.department}">department</td>
+        <td>
+            <a th:href="@{/updateInfo(empId=${employee.id})}" class="btn btn-update">
+                <i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+            <a th:href="@{/deleteEmployee(empId=${employee.id})}" class="btn btn-delete">
+                <i class="fa fa-trash" aria-hidden="true"></i></a>
+        </td>
+    </tr>
+</table>
+<br>
+<input type="button" value="Add" onclick="window.location.href= 'addNewEmployee'"/>
+</body>
+</html>

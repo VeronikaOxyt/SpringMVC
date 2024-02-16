@@ -1,0 +1,31 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-3.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html" charset="utf-8">
+    <link th:href="@{../css/style.css}" rel="stylesheet"/>
+    <title>Title</title>
+</head>
+<body>
+    <form th:action="@{/saveEmployee}" th:object="${employee}" modelAttribute="${employee}">
+        <h2>Input employee info</h2>
+        <table>
+            <tr>
+                <td><label>Full name: </label></td>
+                <td><input type="text" class="fullName" th:name="fullName" th:value="${employee.fullName}"
+                           required aria-required="true"/></td>
+            </tr>
+            <tr>
+                <br>
+                <td><label>Department: </label></td>
+                <td><input type="text" class="department" th:name="department" th:value="${employee.department}"
+                                  required aria-required="true"/></td>
+                <input type="hidden" th:field="${employee.id}" />
+            </tr>
+            <tr>
+                <td><button type="submit">Save</button></td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>
